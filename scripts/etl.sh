@@ -138,3 +138,48 @@ else
     exit 1
 fi
 
+###############################################################################
+# 5. LOAD
+###############################################################################
+
+echo ""
+echo "[STEP 4] LOAD"
+echo "Loading transformed data into Gold..."
+
+# Copy the transformed dataset into the Gold directory.
+cp "$TRANSFORMED_FILE" "$GOLD_FILE"
+
+# Confirm that the file exists in Gold.
+if [[ -s "$GOLD_FILE" ]]; then
+    echo "SUCCESS: File has been loaded into Gold:"
+    echo "        $GOLD_FILE"
+else
+    echo "ERROR: File could not be loaded into Gold."
+    exit 1
+fi
+
+###############################################################################
+# 6. PIPELINE SUMMARY
+###############################################################################
+
+echo ""
+echo "============================================================"
+echo "              ETL PIPELINE COMPLETED"
+echo "============================================================"
+
+echo "Extracted file:"
+echo "  $RAW_FILE"
+
+echo ""
+echo "Transformed file:"
+echo "  $TRANSFORMED_FILE"
+
+echo ""
+echo "Gold file:"
+echo "  $GOLD_FILE"
+
+echo ""
+echo "ETL process completed successfully."
+echo "============================================================"
+
+
